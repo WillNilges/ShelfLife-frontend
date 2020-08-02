@@ -9,7 +9,7 @@ function App() {
   useEffect( () => {
     const fetchData = async () => {
       const apiResponse = await getProjects();
-      setProjects(apiResponse);  
+      setProjects(apiResponse);
     }
     fetchData();
   }, []);

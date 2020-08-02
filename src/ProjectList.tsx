@@ -12,7 +12,7 @@ function ProjectList({projects}: OwnProps) {
             {
                 projects.map(project => {
                     return (<li>{
-                        `${project.name} | ${project.id} | ${project.age} | ${project.isPrivate}`
+                        `${project.name} | ${project.quantity}`
                     }</li>);
                 })
             }
