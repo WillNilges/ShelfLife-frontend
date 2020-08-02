@@ -1,16 +1,16 @@
 import axios from "axios";
 
-// export type Project = {
-//     name: string;
-//     id: string;
-//     age: number;
-//     isPrivate: boolean;
-// }
-
 export type Project = {
     name: string;
-    quantity: number;
+    id: string;
+    age: number;
+    isPrivate: boolean;
 }
+
+// export type Project = {
+//     name: string;
+//     quantity: number;
+// }
 
 const apiClient = axios.create({
     baseURL: 'http://127.0.0.1:3030',
@@ -24,32 +24,48 @@ const apiClient = axios.create({
 
 async function getProjects(): Promise<Project[]> {
     //TODO: Age, alphabetical, alphabetical by owner, (owned by admins or not)
-    var builtResponse: Project = {name: "An ITEM!", quantity: 1332};
+    var builtResponse: Project = {name: "An ITEM!", id: "1332", age: 289, isPrivate: true};
     console.log("this is running now!");
     // Make a request for a user with a given ID
     apiClient.post('/v1/groceries', {
         "name": "apple",
-        "quantity": 3
+        "id": "apple287189211",
+        "age": 3,
+        "isPrivate": false
+    });
+
+    apiClient.post('/v1/groceries', {
+        "name": "orang",
+        "id": "99999",
+        "age": 3,
+        "isPrivate": false    });
+
+    apiClient.post('/v1/groceries', {
+        "name": "one",
+        "id": "8181881",
+        "age": 3,
+        "isPrivate": false
     });
     
-    apiClient.get('/v1/groceries')
+    var yeet = apiClient.get('/v1/groceries')
         .then( (response) => {
 
             // handle success
             console.log("the api call worked");
             console.log(response.data);
-            console.log(response.data.name);
-            console.log(response.data.quantity);
-            // return [{response}];
+            console.log(response.data[Object.keys(response.data)[0]].name);
+            // console.log(response.data.apple);
+            // console.log(response.data.quantity);
+            return [response.data[Object.keys(response.data)[0]], response.data[Object.keys(response.data)[1]], response.data[Object.keys(response.data)[2]]];
         })
         .catch((e) => {
             console.log(e);
             console.log("the api call didn't work!");
+                return [builtResponse, ];
+
         }
     );
-    return [builtResponse, ];
-
-
+    return yeet;
 
     // apiClient.get('/v1/groceries')
     //     .then( (response) => {
