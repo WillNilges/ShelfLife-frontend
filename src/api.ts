@@ -1,16 +1,12 @@
 import axios from "axios";
 
 export type Project = {
-    name: string;
-    id: string;
-    age: number;
-    isPrivate: boolean;
+    namespace: string;
+    admins: string[];
+    discovery_date: string;
+    last_update: string;
+    cause: string;
 }
-
-// export type Project = {
-//     name: string;
-//     quantity: number;
-// }
 
 const apiClient = axios.create({
     baseURL: 'http://127.0.0.1:3030',
@@ -24,30 +20,34 @@ const apiClient = axios.create({
 
 async function getProjects(): Promise<Project[]> {
     //TODO: Age, alphabetical, alphabetical by owner, (owned by admins or not)
-    var builtResponse: Project = {name: "An ITEM!", id: "1332", age: 289, isPrivate: true};
+    var builtResponse: Project = {namespace: "we FAILED!", admins: ["someone", "someone_else"], discovery_date: "2020", last_update: "2019", cause: "deployment"};
     console.log("this is running now!");
     // Make a request for a user with a given ID
-    apiClient.post('/v1/groceries', {
-        "name": "apple",
-        "id": "apple287189211",
-        "age": 3,
-        "isPrivate": false
+    apiClient.post('/v1/greylist', {
+        "namespace": "apple",
+        "admins": ["rachel", "manny"],
+        "discovery_date": "3333",
+        "last_update": "3334",
+        "cause": "creation"
     });
 
-    apiClient.post('/v1/groceries', {
-        "name": "orang",
-        "id": "99999",
-        "age": 3,
-        "isPrivate": false    });
+    apiClient.post('/v1/greylist', {
+        "namespace": "orang",
+        "admins": ["rachel", "manny"],
+        "discovery_date": "2233",
+        "last_update": "3314",
+        "cause": "deployment"
+    });
 
-    apiClient.post('/v1/groceries', {
-        "name": "one",
-        "id": "8181881",
-        "age": 3,
-        "isPrivate": false
+    apiClient.post('/v1/greylist', {
+        "namespace": "banna",
+        "admins": ["rachel", "manny"],
+        "discovery_date": "3311133",
+        "last_update": "111111111111222",
+        "cause": "yeetus"
     });
     
-    var yeet = apiClient.get('/v1/groceries')
+    var yeet = apiClient.get('/v1/greylist')
         .then( (response) => {
 
             // handle success
@@ -65,20 +65,7 @@ async function getProjects(): Promise<Project[]> {
 
         }
     );
-    return yeet;
-
-    // apiClient.get('/v1/groceries')
-    //     .then( (response) => {
-    //         // handle success
-    //         console.log("the api call worked");
-    //         console.log(response.data);
-    //         // return [{response}];
-    //     })
-    //     .catch(() => {
-    //         console.log("the api call didn't work!");
-    //     }
-    // );
-        
+    return yeet;        
 }
 
 export {getProjects}

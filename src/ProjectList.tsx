@@ -11,8 +11,9 @@ function ProjectList({projects}: OwnProps) {
         <ul>
             {
                 projects.map(project => {
-                    return (<li>{
-                        `${project.name} | ${project.id}`
+                    return (
+                    <li>{
+                        `${project.namespace} | ${project.admins} | ${project.discovery_date} | ${project.last_update} | ${project.cause}`
                     }</li>);
                 })
             }
