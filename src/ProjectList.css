@@ -1,0 +1,30 @@
+.cardView {
+    display: flex;
+    align-content: flex-start;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.projectCard {
+    background-color: #5F486B;
+    color: #D09EEB;
+    margin: 5px;
+    padding: 5px;
+    text-align: left;
+    width: 30%;
+
+}
+
+.cardName {
+    font-size: larger;
+    font-weight: bold;
+    word-wrap: break-word;
+}
+
+.cardStamp {
+    font-size: smaller;
+}
+
+.cause {
+    font-family: monospace;
+}
